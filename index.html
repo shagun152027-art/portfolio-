@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Shagun Pasi ✨ | Student Portfolio</title>
+  <!-- Google Fonts & simple animation library -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #fff5f7 0%, #ffe9ef 100%);
+      color: #4a2c2c;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* floating particles container */
+    .floating-petals {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      background: radial-gradient(circle, rgba(255,209,220,0.6), rgba(255,182,193,0.3));
+      border-radius: 80% 20% 70% 30% / 60% 50% 50% 40%;
+      filter: blur(1px);
+      animation: floatPetals linear infinite;
+      opacity: 0.5;
+      width: 12px;
+      height: 12px;
+    }
+
+    @keyframes floatPetals {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.7;
+      }
+      80% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-20vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* main container relative to sit above particles */
+    .site-wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* glassmorphism navbar */
+    .navbar {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto;
+      max-width: 90%;
+      background: rgba(255, 245, 245, 0.7);
+      backdrop-filter: blur(14px);
+      border-radius: 60px;
+      padding: 12px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(212, 175, 55, 0.2);
+      z-index: 1000;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .navbar a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #a35c6f;
+      transition: 0.3s;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+      position: relative;
+    }
+
+    .navbar a i {
+      margin-right: 6px;
+      font-size: 0.9rem;
+    }
+
+    .navbar a:hover, .navbar a.active {
+      color: #d4af37;
+      text-shadow: 0 0 5px rgba(212, 175, 55, 0.4);
+    }
+
+    /* sections */
+    section {
+      padding: 100px 20px 70px;
+      min-height: auto;
+      scroll-margin-top: 90px;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .hero-content h1 {
+      font-size: 4.5rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #c27e8f, #d4af37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+    }
+
+    .hero-content p {
+      font-size: 1.4rem;
+      color: #8b5e6b;
+      margin: 20px 0 30px;
+    }
+
+    .btn-gold {
+      background: transparent;
+      border: 2px solid #d4af37;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #a05a6e;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .btn-gold:hover {
+      background: #d4af37;
+      color: white;
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+      transform: scale(1.02);
+    }
+
+    /* card styling */
+    .card {
+      background: rgba(255, 248, 245, 0.8);
+      backdrop-filter: blur(4px);
+      border-radius: 32px;
+      padding: 28px 24px;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(212, 175, 55, 0.2);
+      transition: all 0.4s ease;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 40px -16px rgba(212, 175, 55, 0.3), 0 0 0 1px rgba(212, 175, 55, 0.5);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 28px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      display: inline-block;
+      border-left: 5px solid #d4af37;
+      padding-left: 18px;
+      background: linear-gradient(120deg, #b16c7c, #d4af37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .grid-2, .grid-3, .grid-4 {
+      display: grid;
+      gap: 28px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+    .skill-badge {
+      background: #ffeef2;
+      padding: 12px 18px;
+      border-radius: 100px;
+      text-align: center;
+      font-weight: 500;
+      transition: 0.2s;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .skill-badge i {
+      margin-right: 8px;
+      color: #d4af37;
+    }
+
+    .interest-item {
+      background: #fffafc;
+      border-radius: 28px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .achievement-card {
+      background: #fff5f7;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      border: 1px solid #ffcdd6;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.8);
+      font-family: inherit;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: #d4af37;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+
+    .contact-form button {
+      background: #d4af37;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: bold;
+      color: #4a2c2c;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact-form button:hover {
+      background: #c49f2c;
+      transform: scale(0.98);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    }
+
+    .personal-info p {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .personal-info i {
+      width: 28px;
+      color: #d4af37;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.8rem;
+      color: #b98b96;
+      border-top: 1px solid rgba(212, 175, 55, 0.3);
+      margin-top: 20px;
+    }
+
+    @media (max-width: 780px) {
+      .navbar {
+        gap: 16px;
+        padding: 10px 18px;
+      }
+      .navbar a {
+        font-size: 0.8rem;
+      }
+      .hero-content h1 {
+        font-size: 2.7rem;
+      }
+      section {
+        padding: 80px 16px 50px;
+      }
+    }
+
+    /* fade animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    hr {
+      margin: 20px 0;
+      border: 0.5px solid rgba(212, 175, 55, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+<div class="floating-petals" id="petalsContainer"></div>
+
+<div class="site-wrapper">
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+    <a href="#about" class="nav-link"><i class="fas fa-user"></i> About</a>
+    <a href="#education" class="nav-link"><i class="fas fa-graduation-cap"></i> Education</a>
+    <a href="#skills" class="nav-link"><i class="fas fa-code"></i> Skills</a>
+    <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content fade-up">
+      <h1>Shagun ✨</h1>
+      <p>Student from Mumbai building her future step by step 💖</p>
+      <button class="btn-gold" id="exploreBtn">Explore</button>
+    </div>
+  </section>
+
+  <!-- About Section: career objective + intro -->
+  <section id="about">
+    <div class="fade-up">
+      <h2>About Me</h2>
+      <div class="card" style="margin-top: 20px;">
+        <p style="font-size: 1.1rem; line-height: 1.5;"><strong>Career Objective:</strong><br> 
+        “Motivated and hardworking student aspiring to pursue B.Tech in Information Technology / Computer Science. Passionate about technology, problem-solving, and learning new skills. Seeking opportunities to grow academically and develop strong technical knowledge.”</p>
+        <hr>
+        <p>📍 Mumbai, Maharashtra · 🎓 12th PCM (2025) · MHT-CET 61 percentile<br>I believe in consistency, aesthetics, and honest growth. Currently exploring the world of computers, mathematics, and design, with a dream to build creative solutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education: Timeline / card style -->
+  <section id="education">
+    <div class="fade-up">
+      <h2>Education</h2>
+      <div class="grid-2">
+        <div class="card">
+          <i class="fas fa-school" style="font-size: 2rem; color: #d4af37;"></i>
+          <h3 style="margin: 12px 0 6px;">12th Standard – Science (PCM)</h3>
+          <p>Maharashtra State Board | Year: 2025</p>
+          <p><strong>MHT-CET Score:</strong> 61 Percentile</p>
+          <p>Prepared with dedication, built strong foundation in Physics, Chemistry, Mathematics.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-chart-line" style="font-size: 2rem; color: #d4af37;"></i>
+          <h3 style="margin: 12px 0 6px;">Higher Secondary Journey</h3>
+          <p>Focused on logical reasoning & problem-solving, participated in academic workshops, and developed discipline for competitive exams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills (cards style) -->
+  <section id="skills">
+    <div class="fade-up">
+      <h2>Skills</h2>
+      <div class="grid-3">
+        <div class="skill-badge"><i class="fas fa-laptop"></i> Basic Computer Knowledge</div>
+        <div class="skill-badge"><i class="fas fa-file-word"></i> Microsoft Word / PowerPoint</div>
+        <div class="skill-badge"><i class="fas fa-comments"></i> Communication Skills</div>
+        <div class="skill-badge"><i class="fas fa-puzzle-piece"></i> Problem Solving</div>
+        <div class="skill-badge"><i class="fas fa-clock"></i> Time Management</div>
+        <div class="skill-badge"><i class="fas fa-brain"></i> Quick Learner</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Academic Interests -->
+  <section id="academic-interests">
+    <div class="fade-up">
+      <h2>📚 Academic Interests</h2>
+      <div class="grid-4">
+        <div class="interest-item"><i class="fas fa-calculator"></i> Mathematics</div>
+        <div class="interest-item"><i class="fas fa-atom"></i> Physics</div>
+        <div class="interest-item"><i class="fas fa-microchip"></i> Computer Technology</div>
+        <div class="interest-item"><i class="fas fa-lightbulb"></i> Logical Reasoning</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements (honest & simple) -->
+  <section id="achievements">
+    <div class="fade-up">
+      <h2>🏆 Achievements</h2>
+      <div class="grid-2">
+        <div class="card achievement-card">
+          <i class="fas fa-check-circle" style="color: #d4af37;"></i>
+          <p style="margin-top: 12px;">✔ Successfully completed Higher Secondary Education (Science Stream)</p>
+        </div>
+        <div class="card achievement-card">
+          <i class="fas fa-chart-simple"></i>
+          <p style="margin-top: 12px;">✔ Prepared for competitive exams like MHT-CET with consistent efforts</p>
+        </div>
+        <div class="card achievement-card">
+          <i class="fas fa-heart"></i>
+          <p style="margin-top: 12px;">✔ Strong dedication to academic improvement & self-learning</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Details Section -->
+  <section id="personal-details">
+    <div class="fade-up">
+      <h2>👤 Personal Details</h2>
+      <div class="card personal-info">
+        <p><i class="fas fa-calendar-alt"></i> <strong>Date of Birth:</strong> 27-05-2008</p>
+        <p><i class="fas fa-language"></i> <strong>Languages:</strong> English, Hindi, Marathi</p>
+        <p><i class="fas fa-heart"></i> <strong>Hobbies:</strong> Learning about technology, Organizing notes & aesthetic stationery, Fitness, Dance, Cooking</p>
+        <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Mumbai, Maharashtra</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section with styled form UI -->
+  <section id="contact">
+    <div class="fade-up">
+      <h2>Contact</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Let's connect 💌</h3>
+          <p><i class="fas fa-phone-alt"></i> +91 8591962027</p>
+          <p><i class="fas fa-envelope"></i> shagun152027@gmail.com</p>
+          <p><i class="fas fa-map-pin"></i> Mumbai, Maharashtra</p>
+          <div style="margin-top: 24px;">
+            <i class="fab fa-instagram" style="margin-right: 16px; font-size: 1.5rem; color:#d4af37;"></i>
+            <i class="fab fa-linkedin" style="margin-right: 16px; font-size: 1.5rem; color:#d4af37;"></i>
+            <i class="fab fa-github" style="font-size: 1.5rem; color:#d4af37;"></i>
+          </div>
+        </div>
+        <div class="card">
+          <form class="contact-form" id="messageForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <textarea rows="3" placeholder="Your message..."></textarea>
+            <button type="submit">Send Message ✨</button>
+            <p id="formFeedback" style="margin-top: 12px; font-size: 0.8rem;"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Shagun Pasi — built with pastel dreams & honest growth 💖</p>
+  </footer>
+</div>
+
+<script>
+  // Petal animation generator (sparkles / soft petals)
+  function createPetal() {
+    const petal = document.createElement('div');
+    petal.classList.add('petal');
+    const size = Math.random() * 12 + 6; // 6px to 18px
+    petal.style.width = `${size}px`;
+    petal.style.height = `${size * 0.8}px`;
+    petal.style.left = `${Math.random() * 100}%`;
+    petal.style.animationDuration = `${Math.random() * 10 + 8}s`;
+    petal.style.animationDelay = `${Math.random() * 5}s`;
+    petal.style.opacity = Math.random() * 0.5 + 0.2;
+    petal.style.background = `radial-gradient(circle, rgba(255,209,220,0.7), rgba(212,175,55,0.3))`;
+    document.getElementById('petalsContainer').appendChild(petal);
+    setTimeout(() => {
+      petal.remove();
+    }, 13000);
+  }
+
+  setInterval(() => {
+    if (document.getElementById('petalsContainer').children.length < 45) {
+      for (let i = 0; i < 3; i++) createPetal();
+    }
+  }, 500);
+  for (let i = 0; i < 25; i++) setTimeout(createPetal, i * 200);
+
+  // scroll animations
+  const fadeElements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+  fadeElements.forEach(el => observer.observe(el));
+
+  // Navbar active link + smooth scroll
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function updateActiveSection() {
+    let current = '';
+    const scrollPos = window.scrollY + 150;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href').substring(1);
+      if (href === current) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveSection);
+  window.addEventListener('load', updateActiveSection);
+
+  // Smooth scroll for navbar links
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // explore button smooth to about section
+  document.getElementById('exploreBtn').addEventListener('click', () => {
+    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Contact form handling (simple feedback without backend)
+  const contactForm = document.getElementById('messageForm');
+  const feedback = document.getElementById('formFeedback');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = contactForm.querySelector('input[type="text"]').value.trim();
+    const email = contactForm.querySelector('input[type="email"]').value.trim();
+    if (name && email) {
+      feedback.innerHTML = '✨ Thanks for reaching out! Shagun will get back soon. ✨';
+      feedback.style.color = '#d4af37';
+      contactForm.reset();
+      setTimeout(() => {
+        feedback.innerHTML = '';
+      }, 4000);
+    } else {
+      feedback.innerHTML = '💖 Please fill name and email.';
+      feedback.style.color = '#b56576';
+    }
+  });
+
+  // pre-show visible elements on load
+  window.dispatchEvent(new Event('scroll'));
+  fadeElements.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add('visible');
+    }
+  });
+</script>
+</body>
+</html>
